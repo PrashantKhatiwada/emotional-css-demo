@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-emotion="calm">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emotional CSS — Demo App</title>
+  <link rel="stylesheet" href="/src/demo.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🎭 Emotional CSS — Demo</h1>
+    <p>Adaptive styling via <code>data-emotion</code> driven by your package.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <button id="startBtn">Start</button>
+      <button id="stopBtn" disabled>Stop</button>
+
+      <label class="switch">
+        <input type="checkbox" id="showVideo" checked />
+        <span>Show webcam overlay</span>
+      </label>
+
+      <label>Stability
+        <input type="range" id="stability" min="3" max="60" value="20" />
+      </label>
+
+      <label>Update interval (ms)
+        <input type="number" id="interval" min="100" step="50" value="200" />
+      </label>
+    </section>
+
+    <section class="status">
+      <div>Emotion: <strong id="emotionLabel">none</strong></div>
+      <div>Confidence: <strong id="confidence">0.00</strong></div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>Adaptive Card</h2>
+        <p>
+          The page theme changes based on <code>data-emotion</code> set by the engine.
+          Try smiling, focusing, or use the simulator keys 1–5.
+        </p>
+        <button class="cta">Primary Action</button>
+      </div>
+      <div class="card">
+        <h2>Form</h2>
+        <label>Number <input type="number" value="42" /></label>
+        <label>Intensity <input type="range" min="0" max="100" value="50" /></label>
+      </div>
+    </section>
+
+    <section class="video-wrap">
+      <video id="video" playsinline></video>
+      <canvas id="overlay"></canvas>
+    </section>
+  </main>
+
+  <!-- Vite entry -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
